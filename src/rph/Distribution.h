@@ -35,7 +35,7 @@
  */
 #pragma once
 
-#include "cinder/app/AppNative.h"
+#include "cinder/app/App.h"
 #include "cinder/Rand.h"
 #include "cinder/Utilities.h"
 #include <stdarg.h>
