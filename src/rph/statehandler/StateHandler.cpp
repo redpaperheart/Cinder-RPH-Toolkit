@@ -67,7 +67,7 @@ namespace rph{
         //if( mCurState == nextState && mCurState != STATE_NONE ) { return; }
         
         mNextState = nextState;
-        signal_onStateChangeStart();
+        signal_onStateChangeStart.emit();
         
         // switch statement
         _changeState(nextState);
@@ -79,7 +79,7 @@ namespace rph{
         
         mCurState = mNextState;
         mNextState = STATE_NONE;
-        signal_onStateChangeComplete();
+        signal_onStateChangeComplete.emit();
     }
     
     

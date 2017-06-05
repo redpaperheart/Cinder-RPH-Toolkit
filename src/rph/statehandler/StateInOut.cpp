@@ -48,10 +48,10 @@ void StateInOut::animateIn(){
 void StateInOut::animateIn( bool forceAnim ){
     if((mCurState != STATE_IN_START && mCurState != STATE_IN) || forceAnim ){
         mCurState = STATE_IN_START;
-        signal_onAnimateInStart();
+        signal_onAnimateInStart.emit();
         _animateIn();
     }else if(mCurState == STATE_IN && mDispatchCompleteOnUnchangedState){
-        signal_onAnimateIn();
+        signal_onAnimateIn.emit();
     }
 }
 void StateInOut::animateOut(){
@@ -60,10 +60,10 @@ void StateInOut::animateOut(){
 void StateInOut::animateOut( bool forceAnim ){
     if(mCurState == STATE_IN || forceAnim){
         mCurState = STATE_OUT_START;
-        signal_onAnimateOutStart();
+        signal_onAnimateOutStart.emit();
         _animateOut();
     }else if(mCurState == STATE_OUT && mDispatchCompleteOnUnchangedState){
-        signal_onAnimateOut();
+        signal_onAnimateOut.emit();
     }
 }
 
@@ -77,12 +77,12 @@ void StateInOut::_animateOut(){
 
 void StateInOut::_onAnimateIn(){
     mCurState = STATE_IN;
-    signal_onAnimateIn();
+    signal_onAnimateIn.emit();
 }
 
 void StateInOut::_onAnimateOut(){
     mCurState = STATE_OUT;
-    signal_onAnimateOut();
+    signal_onAnimateOut.emit();
 }
     
 }

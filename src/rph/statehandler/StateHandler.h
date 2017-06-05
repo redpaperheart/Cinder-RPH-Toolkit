@@ -35,12 +35,6 @@
  */
 #pragma once
 
-//#include "cinder/app/AppNative.h"
-
-// boost error hack: http://forum.libcinder.org/topic/notificationcenter-in-cinder
-#define BOOST_INTEL_STDCXX0X
-#include <boost/signals2.hpp>
-
 namespace rph{
     
 //    class State{
@@ -73,8 +67,8 @@ namespace rph{
         virtual State getNextState()const{ return mNextState; }
         //void setNextState(const State &stateId); -> changeState( State s)
         
-        boost::signals2::signal<void ()> signal_onStateChangeStart;
-        boost::signals2::signal<void ()> signal_onStateChangeComplete;
+        ci::signals::Signal<void ()> signal_onStateChangeStart;
+        ci::signals::Signal<void ()> signal_onStateChangeComplete;
         
       protected:    
         State mCurState;
