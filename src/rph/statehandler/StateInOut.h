@@ -35,6 +35,9 @@
  */
 #pragma once
 
+#include <string>
+#include "cinder/app/App.h"
+
 namespace rph{
 
 class StateInOut {
