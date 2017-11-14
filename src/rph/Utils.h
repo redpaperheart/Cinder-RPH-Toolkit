@@ -13,6 +13,8 @@ namespace rph {
     std::string getDateString();
     std::string getTimeString();
     
+    void searchAndAddAssetDirectory(std::string dir, int depth = 10);
+    
     template<typename T>
     T clampedLmap(T val, T inMin, T inMax, T outMin, T outMax)
     {

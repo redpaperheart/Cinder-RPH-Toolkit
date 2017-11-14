@@ -10,6 +10,16 @@
 
 namespace rph {
     
+    void searchAndAddAssetDirectory(std::string dir, int depth){
+        for(int i = 0; i<depth; i++ ){
+            if( fs::exists(dir) ){
+                ci::app::console() << "Adding Asset folder: " <<   dir << std::endl;
+                cinder::app::addAssetDirectory(dir);
+            }
+            dir = "../"+dir;
+        }
+    }
+    
     std::string getTimestamp(const std::string &format)
     {
         auto now = std::chrono::system_clock::now();
