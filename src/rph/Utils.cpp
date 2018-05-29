@@ -46,5 +46,17 @@ namespace rph {
         out << std::fixed << std::setprecision( 2 ) << num;
         return out.str();
     }
+	
+	ci::ColorA getColorAFromRgbaString(std::string rgba){
+		// accepts strings in the form of "rgba(225,163,92,0.6)"
+		try{
+			int start = rgba.find("(")+1;
+			int end = rgba.find(")") - start;
+			rgba = rgba.substr(start, end);		std::vector<std::string> colorValues = ci::split( rgba, ',');
+			return ci::ColorA( std::stof(colorValues[0])/255.0f,std::stof(colorValues[1])/255.0f,std::stof(colorValues[2])/255.0, std::stof(colorValues[3]) );
+		}catch(...){
+		CI_LOG_E( "Error converting " << rgba << " to ci::ColorA." );
+		}
+	}
     
 }

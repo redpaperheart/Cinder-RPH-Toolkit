@@ -33,10 +33,8 @@ namespace rph
 		void drawSolidRect(float width, float height);
 	
 	protected:
-
 		void setup();
 		gl::BatchRef	mRectBatch;
-		
 			
 	};
 

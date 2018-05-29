@@ -2,7 +2,8 @@
 #pragma once
 
 #include "cinder/app/App.h"
-
+#include "cinder/Utilities.h"
+#include "cinder/Log.h"
 using namespace ci;
 
 namespace rph {
@@ -26,4 +27,7 @@ namespace rph {
     {
         return outMin + ((outMax - outMin) * smoothstep(inMin, inMax, val));
     }
+	
+	// concert "rgba(225,163,92, .6)" to ci::Color
+	ci::ColorA getColorAFromRgbaString(std::string rgba);
 }
