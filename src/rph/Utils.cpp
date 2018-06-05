@@ -55,8 +55,18 @@ namespace rph {
 			rgba = rgba.substr(start, end);		std::vector<std::string> colorValues = ci::split( rgba, ',');
 			return ci::ColorA( std::stof(colorValues[0])/255.0f,std::stof(colorValues[1])/255.0f,std::stof(colorValues[2])/255.0, std::stof(colorValues[3]) );
 		}catch(...){
-		CI_LOG_E( "Error converting " << rgba << " to ci::ColorA." );
+			CI_LOG_E( "rph::getColorAFromRgbaString|Error converting " << rgba << " to ci::ColorA." );
 		}
+	}
+	
+	std::string toRgbaString(ColorA c){
+		std::string str = "rgba(";
+		str += ci::toString(int(c.r*255.0f))+",";
+		str += ci::toString(int(c.g*255.0f))+",";
+		str += ci::toString(int(c.b*255.0f))+",";
+		str += ci::toString(c.a);
+		str += ")";
+		return str;
 	}
     
 }

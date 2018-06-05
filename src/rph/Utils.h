@@ -30,4 +30,5 @@ namespace rph {
 	
 	// concert "rgba(225,163,92, .6)" to ci::Color
 	ci::ColorA getColorAFromRgbaString(std::string rgba);
+	std::string toRgbaString(ColorA c);
 }
