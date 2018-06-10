@@ -14,8 +14,7 @@ namespace rph{
 
 	void RenderUtils::setup()
 	{
-		auto lambert = gl::ShaderDef().color();
-		gl::GlslProgRef shader = gl::getStockShader( lambert );	
+		gl::GlslProgRef shader = gl::getStockShader( gl::ShaderDef().color() );
 		mRectBatch = gl::Batch::create( geom::Rect(Rectf(0,0,1,1)), shader );
 	}
 
@@ -23,6 +22,14 @@ namespace rph{
 	{
 		gl::ScopedMatrices mat;
 		gl::scale(width, height);
+		mRectBatch->draw();
+	}
+	
+	void RenderUtils::drawSolidRect(DisplayObject2D *obj){
+		gl::ScopedMatrices mat;
+		gl::ScopedColor c(obj->mColorA);
+		gl::translate(obj->mPos() + obj->mOffset());
+		gl::scale(obj->mWidth, obj->mHeight);
 		mRectBatch->draw();
 	}
 } //namesoace rph

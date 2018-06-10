@@ -9,9 +9,10 @@
 #pragma once
 
 #include "cinder/app/App.h"
-#include <cinder/app/RendererGl.h>
-#include <cinder/gl/gl.h>
+#include "cinder/app/RendererGl.h"
+#include "cinder/gl/gl.h"
 
+#include "rph/DisplayObject.h"
 using namespace ci;
 
 namespace rph 
@@ -31,6 +32,7 @@ namespace rph
 	public:
 		static RenderUtils* getInstance();
 		void drawSolidRect(float width, float height);
+		void drawSolidRect(rph::DisplayObject2D* obj);
 	
 	protected:
 		void setup();
@@ -39,6 +41,7 @@ namespace rph
 	};
 
 	inline 	void drawSolidRect(float width, float height){  RenderUtils::getInstance()->drawSolidRect(width, height); };
+	inline 	void drawSolidRect(rph::DisplayObject2D* obj){  RenderUtils::getInstance()->drawSolidRect(obj); };
 
 
 }
