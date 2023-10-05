@@ -11,10 +11,12 @@
 namespace rph {
     
     void searchAndAddAssetDirectory(std::string dir, int depth){
-        for(int i = 0; i<depth; i++ ){
-            if( fs::exists(dir) ){
-                ci::app::console() << "Adding Asset folder: " <<   dir << std::endl;
-                cinder::app::addAssetDirectory(dir);
+        // expecting a relative path
+        for(int i = 0; i < depth; i++ ){
+            if( fs::exists(ci::app::getAppPath() / dir) ){
+//                ci::app::console() << "Adding Asset folder: " << (ci::app::getAppPath() / dir) << std::endl;
+                cinder::app::addAssetDirectory(ci::app::getAppPath() / dir);
+                break;
             }
             dir = "../"+dir;
         }
