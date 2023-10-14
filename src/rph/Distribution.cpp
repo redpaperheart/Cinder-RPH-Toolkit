@@ -40,11 +40,11 @@ namespace rph {
     void Distribution::setup(std::vector<float> dist){
         mDist = dist;
         float sum = 0.0f;
-        for( std::vector<float>::iterator it = mDist.begin(); it != mDist.end(); it++){
+        for (std::vector<float>::iterator it = mDist.begin(); it != mDist.end(); it++) {
             sum += (*it);
         }
         float sumPct = 0.0f;
-        for( std::vector<float>::iterator it = mDist.begin(); it != mDist.end(); it++){
+        for (std::vector<float>::iterator it = mDist.begin(); it != mDist.end(); it++) {
             sumPct += (*it);
             mDistPct.push_back( sumPct/sum);
         }
@@ -52,8 +52,8 @@ namespace rph {
     
     int Distribution::getIndexByPerc(float perc){
         perc = ci::math<float>::clamp(perc, 0.0f, 1.0f);
-        for (int i = 0; i<mDistPct.size(); i++){
-            if( perc <= mDistPct[i]){
+        for (int i = 0; i<mDistPct.size(); i++) {
+            if (perc <= mDistPct[i]) {
                 return i;
             }
         }
@@ -61,15 +61,15 @@ namespace rph {
     }
     
     std::string Distribution::toStr(){
-        if(mDist.empty() || mDistPct.empty()) return "distribution lists are empty.";
+        if (mDist.empty() || mDistPct.empty()) return "distribution lists are empty.";
         
         std::string str = "<";
-        for(int i=0; i<mDist.size()-1; i++){
+        for (int i=0; i<mDist.size()-1; i++) {
             str += ci::toString(mDist[i])+",";
         }
         str += ci::toString(mDist[mDist.size()-1])+"> -> <";
         
-        for(int i=0; i < mDistPct.size()-1; i++){
+        for (int i=0; i < mDistPct.size()-1; i++) {
             str += ci::toString(mDistPct[i])+",";
         }
         str += ci::toString(mDistPct[mDistPct.size()-1])+">";

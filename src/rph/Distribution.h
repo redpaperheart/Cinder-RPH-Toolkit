@@ -42,7 +42,7 @@
 
 namespace rph {
 
-class Distribution{
+class Distribution {
 public:
     
     Distribution(){}
